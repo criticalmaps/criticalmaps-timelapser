@@ -1,0 +1,7 @@
+{
+  "url": "https://github.com/TODO",
+  "email": "stephanlindauer@posteo.de",
+  "dependencies": {
+    "phantom": "^2.1.8"
+  }
+}
