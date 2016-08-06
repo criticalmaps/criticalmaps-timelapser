@@ -1,10 +1,10 @@
 var phantom = require('phantom');
+var zpad = require('zpad');
+
+zpad.amount(12);
 
 var sitepage = null;
 var phInstance = null;
-
-console.log("status");
-
 
 phantom.create()
     .then(instance => {
@@ -21,11 +21,13 @@ phantom.create()
     })
     .then(status => {
         console.log(status);
-        setTimeout(function() {
-            sitepage.render('screenshot.png');
-            sitepage.close();
-            phInstance.exit();
-        }, 1000);
+        var imageCounter = 0;
+        setInterval(function() {
+            sitepage.render(zpad(imageCounter)+'.png');
+             imageCounter++;
+        }, 2000);
+        // sitepage.close();
+        // phInstance.exit();
     })
     .catch(error => {
         console.log(error);
