@@ -1,10 +1,19 @@
-FROM ubuntu:14.04
+FROM node:6.4
 
-RUN apt-get -qq update && \
-    apt-get install -y software-properties-common && \
-    add-apt-repository -y ppa:jon-severinsson/ffmpeg && \
+RUN echo "deb http://ftp.uk.debian.org/debian jessie-backports main" >> /etc/apt/sources.list && \
     apt-get -qq update && \
-    apt-get -qq -y upgrade && \
-    apt-get install -y ffmpeg
+    apt-get -qq -y install ffmpeg
 
-RUN ffmpeg -version
+RUN groupadd -r node && useradd -r -g node node
+
+ENV APP_DIR /usr/src/app/
+
+RUN mkdir -p $APP_DIR
+WORKDIR $APP_DIR
+
+COPY package.json $APP_DIR
+RUN npm install --silent
+
+COPY . $APP_DIR
+
+RUN chown -R node:node $APP_DIR
