@@ -17,3 +17,5 @@ RUN npm install --silent
 COPY . $APP_DIR
 
 RUN chown -R node:node $APP_DIR
+
+CMD [ "npm", "start" ]
