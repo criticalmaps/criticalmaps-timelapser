@@ -5,7 +5,7 @@ var zlib = require('zlib');
 var fileExists = require('file-exists');
 var AWS = require('aws-sdk');
 
-var FOLDER = new Date().toISOString() + "/";
+var FOLDER = "images/" + new Date().toISOString() + "/";
 
 AWS.config.update({
   accessKeyId: 'AKIAJJFK3VJ3HUIYLQGQ',

@@ -1,0 +1,9 @@
+version: '2'
+services:
+  timelapser:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ./images:/usr/src/app/images
