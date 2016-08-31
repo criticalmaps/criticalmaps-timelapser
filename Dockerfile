@@ -18,4 +18,4 @@ COPY . $APP_DIR
 
 RUN chown -R node:node $APP_DIR
 
-CMD [ "npm", "start" ]
+CMD [ "npm", "start" ] 
